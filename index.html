@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary & Maaf Ya</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+      background-color: #fff7ed;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23e6ccb2' fill-opacity='0.35'%3E%3Cellipse cx='28' cy='34' rx='9' ry='7' transform='rotate(-15 28 34)'/%3E%3Cellipse cx='16' cy='23' rx='3.5' ry='4.5' transform='rotate(-25 16 23)'/%3E%3Cellipse cx='25' cy='18' rx='3.5' ry='4.5' transform='rotate(-10 25 18)'/%3E%3Cellipse cx='35' cy='20' rx='3.5' ry='4.5' transform='rotate(10 35 20)'/%3E%3Cellipse cx='42' cy='27' rx='3.5' ry='4.5' transform='rotate(25 42 27)'/%3E%3Cellipse cx='88' cy='86' rx='9' ry='7' transform='rotate(15 88 86)'/%3E%3Cellipse cx='75' cy='79' rx='3.5' ry='4.5' transform='rotate(-20 75 79)'/%3E%3Cellipse cx='84' cy='72' rx='3.5' ry='4.5' transform='rotate(-5 84 72)'/%3E%3Cellipse cx='94' cy='73' rx='3.5' ry='4.5' transform='rotate(10 94 73)'/%3E%3Cellipse cx='102' cy='80' rx='3.5' ry='4.5' transform='rotate(25 102 80)'/%3E%3C/g%3E%3C/svg%3E");
+      min-height: 100vh;
+      color: #4a3525;
+      padding: 36px 18px 50px 18px;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      max-width: 470px;
+      margin: 0 auto;
+    }
+
+    .cat-top-stage {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 6px;
+      margin-bottom: -14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-cat {
+      width: 68px;
+      height: 56px;
+      display: inline-block;
+      animation: miniWiggle 3.8s ease-in-out infinite;
+    }
+
+    .mini-cat.right {
+      animation-delay: 1.4s;
+    }
+
+    .peeking-cat {
+      width: 156px;
+      height: 102px;
+      display: inline-block;
+      animation: headWiggle 3s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    @keyframes headWiggle {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      25% { transform: rotate(-4deg) translateY(-2px); }
+      75% { transform: rotate(4deg) translateY(-2px); }
+    }
+
+    @keyframes miniWiggle {
+      0%, 100% { transform: rotate(0deg); }
+      30% { transform: rotate(5deg); }
+      70% { transform: rotate(-5deg); }
+    }
+
+    .card {
+      background: #fffdf9;
+      border: 2.5px solid #f3d5b5;
+      border-radius: 26px;
+      padding: 28px 22px 30px 22px;
+      box-shadow: 0 14px 32px rgba(188, 128, 72, 0.16);
+      position: relative;
+      z-index: 3;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ffedd5;
+      color: #b45309;
+      border: 1px solid #fed7aa;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #5c3a21;
+      margin-bottom: 16px;
+    }
+
+    .letter {
+      text-align: left;
+      background: #fff7ed;
+      border: 1.5px dashed #e6ccb2;
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 14.5px;
+      line-height: 1.72;
+      color: #4f3a29;
+      margin-bottom: 16px;
+    }
+
+    .letter p { margin-bottom: 10px; }
+    .letter p:last-child { margin-bottom: 0; }
+
+    .gift-note {
+      background: #fae1c3;
+      color: #5c3a21;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 24px;
+      padding: 11px 18px;
+      font-size: 13.5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.18s ease, background-color 0.18s ease;
+    }
+
+    button:hover { transform: translateY(-2px); }
+
+    .btn-yes {
+      background: #e07a5f;
+      color: #ffffff;
+      box-shadow: 0 5px 12px rgba(224, 122, 95, 0.3);
+    }
+
+    .btn-talk {
+      background: #f5ebe0;
+      color: #5c3a21;
+      border: 1.5px solid #ddb892;
+    }
+
+    #happy-zone {
+      display: none;
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #fef3c7;
+      border: 1.5px solid #fcd34d;
+      color: #78350f;
+    }
+
+    .happy-cats-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .happy-cat {
+      width: 66px;
+      height: 66px;
+      animation: catHop 0.75s ease-in-out infinite alternate;
+    }
+
+    .happy-cat:nth-child(2) { animation-delay: 0.2s; }
+    .happy-cat:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes catHop {
+      from { transform: translateY(0px) rotate(-3deg); }
+      to { transform: translateY(-8px) rotate(3deg); }
+    }
+
+    #reply-text {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="cat-top-stage">
+      <svg class="mini-cat" viewBox="0 0 80 66" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="16,32 10,8 30,22" fill="#ddb892" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+        <polygon points="64,32 70,8 50,22" fill="#ddb892" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="40" cy="40" rx="26" ry="20" fill="#fffaf2" stroke="#5c3a21" stroke-width="2.5"/>
+        <circle cx="30" cy="37" r="3.5" fill="#4a3525"/>
+        <circle cx="50" cy="37" r="3.5" fill="#4a3525"/>
+        <ellipse cx="23" cy="42" rx="4.5" ry="2.5" fill="#ffb5a7" opacity="0.8"/>
+        <ellipse cx="57" cy="42" rx="4.5" ry="2.5" fill="#ffb5a7" opacity="0.8"/>
+        <polygon points="37,41 43,41 40,45" fill="#e76f51"/>
+        <path d="M35 47 Q37.5 50 40 46 Q42.5 50 45 47" fill="none" stroke="#5c3a21" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+      <svg class="peeking-cat" viewBox="0 0 156 102" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="34,50 20,12 60,33" fill="#f4a261" stroke="#5c3a21" stroke-width="3" stroke-linejoin="round"/>
+        <polygon points="37,44 28,20 52,34" fill="#ffb5a7"/>
+        <polygon points="122,50 136,12 96,33" fill="#f4a261" stroke="#5c3a21" stroke-width="3" stroke-linejoin="round"/>
+        <polygon points="119,44 128,20 104,34" fill="#ffb5a7"/>
+        <ellipse cx="78" cy="62" rx="50" ry="34" fill="#fff3e0" stroke="#5c3a21" stroke-width="3"/>
+        <path d="M64 31 L71 45 L78 32 L85 45 L92 31 Z" fill="#f4a261"/>
+        <circle cx="58" cy="56" r="6" fill="#4a3525"/>
+        <circle cx="56" cy="54" r="2.2" fill="#ffffff"/>
+        <circle cx="98" cy="56" r="6" fill="#4a3525"/>
+        <circle cx="96" cy="54" r="2.2" fill="#ffffff"/>
+        <ellipse cx="45" cy="65" rx="7.5" ry="4.5" fill="#ff9ebb" opacity="0.78"/>
+        <ellipse cx="111" cy="65" rx="7.5" ry="4.5" fill="#ff9ebb" opacity="0.78"/>
+        <polygon points="74,63 82,63 78,68" fill="#e76f51"/>
+        <path d="M69 72 Q73.5 77 78 70 Q82.5 77 87 72" fill="none" stroke="#5c3a21" stroke-width="2.6" stroke-linecap="round"/>
+        <line x1="16" y1="58" x2="36" y2="61" stroke="#5c3a21" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="16" y1="68" x2="36" y2="66" stroke="#5c3a21" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="140" y1="58" x2="120" y2="61" stroke="#5c3a21" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="140" y1="68" x2="120" y2="66" stroke="#5c3a21" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+
+      <svg class="mini-cat right" viewBox="0 0 80 66" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="16,32 10,8 30,22" fill="#f6bd60" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+        <polygon points="64,32 70,8 50,22" fill="#f6bd60" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="40" cy="40" rx="26" ry="20" fill="#fff8eb" stroke="#5c3a21" stroke-width="2.5"/>
+        <circle cx="30" cy="37" r="3.5" fill="#4a3525"/>
+        <circle cx="50" cy="37" r="3.5" fill="#4a3525"/>
+        <ellipse cx="23" cy="42" rx="4.5" ry="2.5" fill="#ffb5a7" opacity="0.8"/>
+        <ellipse cx="57" cy="42" rx="4.5" ry="2.5" fill="#ffb5a7" opacity="0.8"/>
+        <polygon points="37,41 43,41 40,45" fill="#e76f51"/>
+        <path d="M35 47 Q37.5 50 40 46 Q42.5 50 45 47" fill="none" stroke="#5c3a21" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="card">
+      <div class="badge">HAPPY ANNIVERSARY &amp; MAAF YA</div>
+      <h1>Untuk Kamu, SAYAANGGKUUU</h1>
+
+      <div class="letter">
+        <p>Selamat anniversary, ya sayaang.</p>
+        <p>Maaf bangeet kalo aku selalu bikin kamu kecewa. Aku tau mungkin di mata kamu aku keliatan beda atau ga kaya dulu lagi.</p>
+        <p>Tapiii, perasaanku ke kamu aslinya nggak pernah berubah sayaaanggg. Yang berubah cuma keadaan dan kesibukan yang lagi aku hadapi sekaranggggggg, kadang bikin aku keteteran sampe ga sengaja bikin kamu ngrasa kurang diperhatiin.</p>
+        <p>Maaf kalau aku belum bisa ngasih sesuatu yang mewah hari inii. Casing HP emang cuma hadiah kecil, tapi aku kasih ini biar setiap hari ada hal dari aku yang nemenin kamuu. Makasih ya udah bertahan sejauh ini.</p>
+      </div>
+
+      <div class="gift-note">
+        <b>Catatan kecil:</b> Jangan lupa dipake ya casing-nya, biar tiap pegang HP kamu inget ada aku sama gerombolan kucing ini di cini hehehehee.
+      </div>
+
+<div class="btns">
+        <button type="button" id="btn-maaf" class="btn-yes">Aku Maafin, Ayo Baikan</button>
+        <button type="button" id="btn-ngobrol" class="btn-talk">Kita Obrolin Pelan-Pelan</button>
+      </div>
+
+      <div id="happy-zone">
+        <div class="happy-cats-row">
+          <svg class="happy-cat" viewBox="0 0 80 72" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="16,36 10,10 30,25" fill="#f4a261" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="64,36 70,10 50,25" fill="#f4a261" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+            <ellipse cx="40" cy="44" rx="27" ry="21" fill="#fff3e0" stroke="#5c3a21" stroke-width="2.5"/>
+            <path d="M25 41 Q30 35 35 41" fill="none" stroke="#4a3525" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M45 41 Q50 35 55 41" fill="none" stroke="#4a3525" stroke-width="2.6" stroke-linecap="round"/>
+            <ellipse cx="22" cy="47" rx="4.5" ry="2.8" fill="#ff9ebb"/>
+            <ellipse cx="58" cy="47" rx="4.5" ry="2.8" fill="#ff9ebb"/>
+            <polygon points="37,45 43,45 40,49" fill="#e76f51"/>
+            <path d="M33 52 Q40 59 47 52" fill="none" stroke="#5c3a21" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+
+          <svg class="happy-cat" viewBox="0 0 80 72" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="14" cy="24" rx="5" ry="8" transform="rotate(-25 14 24)" fill="#fff8eb" stroke="#5c3a21" stroke-width="2.2"/>
+            <ellipse cx="66" cy="24" rx="5" ry="8" transform="rotate(25 66 24)" fill="#fff8eb" stroke="#5c3a21" stroke-width="2.2"/>
+            <polygon points="18,36 12,12 31,26" fill="#f6bd60" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="62,36 68,12 49,26" fill="#f6bd60" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+            <ellipse cx="40" cy="45" rx="26" ry="20" fill="#fff8eb" stroke="#5c3a21" stroke-width="2.5"/>
+            <path d="M26 42 Q30.5 36 35 42" fill="none" stroke="#4a3525" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M45 42 Q49.5 36 54 42" fill="none" stroke="#4a3521" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="23" cy="48" rx="4.5" ry="2.8" fill="#ffb5a7"/>
+            <ellipse cx="57" cy="48" rx="4.5" ry="2.8" fill="#ffb5a7"/>
+            <polygon points="37,46 43,46 40,50" fill="#e76f51"/>
+            <path d="M34 53 Q40 59 46 53" fill="none" stroke="#5c3a21" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+
+          <svg class="happy-cat" viewBox="0 0 80 72" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="16,36 10,10 30,25" fill="#ddb892" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="64,36 70,10 50,25" fill="#ddb892" stroke="#5c3a21" stroke-width="2.5" stroke-linejoin="round"/>
+            <ellipse cx="40" cy="44" rx="27" ry="21" fill="#ffffff" stroke="#5c3a21" stroke-width="2.5"/>
+            <path d="M25 41 Q30 35 35 41" fill="none" stroke="#4a3525" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M45 41 Q50 35 55 41" fill="none" stroke="#4a3525" stroke-width="2.6" stroke-linecap="round"/>
+            <ellipse cx="22" cy="47" rx="5" ry="3" fill="#ff8fa3"/>
+            <ellipse cx="58" cy="47" rx="5" ry="3" fill="#ff8fa3"/>
+            <polygon points="37,45 43,45 40,49" fill="#e76f51"/>
+            <path d="M34 52 Q40 58 46 52" fill="none" stroke="#5c3a21" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div id="reply-text"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var btnMaaf = document.getElementById("btn-maaf");
+      var btnNgobrol = document.getElementById("btn-ngobrol");
+      var zone = document.getElementById("happy-zone");
+      var text = document.getElementById("reply-text");
+
+      function tampilkan(jenis) {
+        if (!zone || !text) return;
+        zone.style.display = "block";
+        if (jenis === "maaf") {
+          text.textContent = "Yeay! Semua kucing ikut meloncat senang! Makasih banyak ya udah mau ngertiin aku, aku janji bakal terus berusaha jadi lebih baik buat kita.";
+        } else {
+          text.textContent = "Siap! Kucing-kucing di sini siap nemenin, kapan pun kamu mau cerita atau ngobrol pelan-pelan aku dengerin semuanya.";
+        }
+      }
+
+      if (btnMaaf) {
+        btnMaaf.addEventListener("click", function () { tampilkan("maaf"); });
+      }
+      if (btnNgobrol) {
+        btnNgobrol.addEventListener("click", function () { tampilkan("ngobrol"); });
+      }
+    })();
+  </script>
+</body>
+</html>
